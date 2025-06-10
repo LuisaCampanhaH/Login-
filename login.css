@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
+/* --- Variáveis Globais de Estilo --- */
+:root {
+    --primary-color: #580606;
+    --secondary-color: #FF2D55;
+    --accent-color: #ad7102;
+    --background-color: #121212;
+    --card-background: #1E1E1E;
+    --card-elements-background: #282828;
+    --text-color: #FFFFFF;
+    --text-muted-color: #AAAAAA;
+    --border-color: #444444;
+    --border-radius-md: 12px;
+    /* Aumentado para um visual mais suave */
+    --font-family-base: 'Roboto', 'Arial', sans-serif;
+}
+
+/* --- Layout Base --- */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: var(--font-family-base);
+    background-color: var(--background-color);
+    padding: 20px;
+}
+
+/* --- Container Principal com Efeito "Glow" --- */
+.login-container {
+    background-color: var(--card-background);
+    padding: 40px 50px;
+    border-radius: var(--border-radius-md);
+    width: 100%;
+    max-width: 480px;
+    position: relative;
+    overflow: hidden;
+    /* Necessário para o efeito de brilho */
+    /* Animação de entrada */
+    opacity: 0;
+    transform: scale(0.95);
+    animation: fadeInScale 0.6s ease-out forwards;
+}
+
+/* Efeito de borda com brilho */
+.login-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: -1px;
+    /* Evita que a borda fique visível sob o container */
+    border-radius: inherit;
+    /* Herda o border-radius do container */
+    background: linear-gradient(to right var(--accent-color), var(--primary-color), );
+}
+
+@keyframes fadeInScale {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.login-container h2 {
+    color: var(--text-color);
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.back-to-home {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.back-to-home a {
+    color: var(--text-muted-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.back-to-home a:hover {
+    color: var(--primary-color);
+}
+
+/* --- Abas de Navegação (Tabs) - NOVO DESIGN --- */
+.nav-tabs {
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 25px;
+}
+
+.nav-tabs .nav-item {
+    width: 33.33%;
+    /* Garante que as 3 abas ocupem o mesmo espaço */
+}
+
+.nav-tabs .nav-link {
+    color: var(--text-muted-color);
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 15px 0;
+    position: relative;
+    opacity: 0.7;
+}
+
+/* Linha inferior animada */
+.nav-tabs .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    /* Alinha com a borda do .nav-tabs */
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--accent-color);
+    transform: scaleX(0);
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.nav-tabs .nav-link:hover {
+    color: var(--text-color);
+    opacity: 1;
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--accent-color);
+    background: none;
+    border-color: transparent;
+    opacity: 1;
+    font-weight: 700;
+}
+
+.nav-tabs .nav-link.active::after {
+    transform: scaleX(1);
+}
+
+/* --- Formulários --- */
+.form-label {
+    color: var(--text-muted-color);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.form-control {
+    background-color: var(--card-elements-background);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 12px;
+    border-radius: var(--border-radius-sm);
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    background-color: var(--card-elements-background);
+    color: var(--text-color);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(255, 196, 0, 0.15);
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: #121212;
+    padding: 14px 30px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: var(--border-radius-sm);
+    transition: all 0.3s ease;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.cta-button:hover {
+    background-color: #FFD340;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:active {
+    transform: translateY(0) scale(0.98);
+    /* Efeito de clique */
+    box-shadow: none;
+}
+
+.login-container .form-text a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-container .form-text a:hover {
+    text-decoration: underline;
+    color: var(--accent-color);
+}
+
+.text-center.mt-3 a {
+    /* Link "Registre-se" */
+    display: inline-block;
+    margin-top: 10px;
+}
+
+
+/* --- Estilização dos Modais de Registro --- */
+.modal-content {
+    background-color: var(--card-elements-background);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-header .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+.modal-footer {
+    border-top: 1px solid var(--border-color);
+}
+
+.modal-body .form-group label {
+    color: var(--text-muted-color);
+}
+
+.modal-body h5 {
+    color: var(--accent-color);
+    margin-top: 10px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-footer .btn-secondary {
+    background-color: var(--border-color);
+    border-color: var(--border-color);
+}
+
+.modal-footer .btn-secondary:hover {
+    background-color: var(--text-muted-color);
+    color: var(--background-color);
+}
+
+.modal-footer .btn-info {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--text-color);
+}
+
+.modal-footer .btn-info:hover {
+    background-color: #1A6ADF;
+    border-color: #1A6ADF;
+}
