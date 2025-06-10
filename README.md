@@ -12,5 +12,8 @@ estou utilizando o Jsonserver com backend
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](print.png)
+![App Screenshot](print1.png)
+![App Screenshot](print2.png)
+
 
